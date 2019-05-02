@@ -21,6 +21,7 @@
         <activity android:name=".Activities.PostListActivity" />
         <activity android:name=".Activities.CategoryListActivity" />
         <activity android:name=".Activities.SinglePostActivity" />
+        <activity android:name=".Activities.PostFormActivity"></activity>
     </application>
 
 </manifest>

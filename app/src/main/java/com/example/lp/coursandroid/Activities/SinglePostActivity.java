@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.android.volley.Response;
@@ -13,6 +15,7 @@ import com.example.lp.coursandroid.Models.Post;
 import com.example.lp.coursandroid.R;
 import com.example.lp.coursandroid.Request.RequestMaker;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class SinglePostActivity extends AppCompatActivity implements Response.ErrorListener {
@@ -24,7 +27,8 @@ public class SinglePostActivity extends AppCompatActivity implements Response.Er
     private String postId;
     private Post post;
 
-
+    private Button deleteButton;
+    private Button updateButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +37,12 @@ public class SinglePostActivity extends AppCompatActivity implements Response.Er
 
         getExtras();
         getPost();
+
+        deleteButton = findViewById(R.id.delete_post_button);
+        updateButton = findViewById(R.id.update_post_button);
+
+        setButtonsListeners();
+
     }
 
     private void getExtras(){
@@ -45,11 +55,20 @@ public class SinglePostActivity extends AppCompatActivity implements Response.Er
                 Log.e("DEBUG", "extra.getString(\"id\") is null" );
         }
     }
+    private void setButtonsListeners() {
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deletePost();
+            }
+        });
+    }
 
     private void getPost(){
         requestMaker.makeSingleObjectGetRequest(
                 this,
-                "post/" + postId,
+                "post" ,
+                postId,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -58,6 +77,20 @@ public class SinglePostActivity extends AppCompatActivity implements Response.Er
                         post = responseJSONHandler.getPost();
 
                         setTextViews();
+                    }
+                },
+                this
+        );
+    }
+    private void deletePost() {
+        requestMaker.makeDeleteRequest(
+                this,
+                "post",
+                postId,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        goBackToListActivity();
                     }
                 },
                 this

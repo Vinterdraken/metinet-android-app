@@ -3,8 +3,6 @@ package com.example.lp.coursandroid.Activities;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -12,7 +10,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.example.lp.coursandroid.Handlers.ResponseJSONHandler;
 import com.example.lp.coursandroid.Models.Category;
-import com.example.lp.coursandroid.Models.Post;
 import com.example.lp.coursandroid.R;
 import com.example.lp.coursandroid.Request.RequestMaker;
 

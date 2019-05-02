@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.android.volley.Response;
@@ -33,6 +34,7 @@ public class PostListActivity extends AppCompatActivity implements Response.Erro
         setContentView(R.layout.activity_post_list);
 
         getPosts();
+        setCreatePostButtonListener();
     }
 
     private void getPosts() {
@@ -51,6 +53,17 @@ public class PostListActivity extends AppCompatActivity implements Response.Erro
                 },
                 this
         );
+    }
+
+    private void setCreatePostButtonListener(){
+        Button createButton = findViewById(R.id.create_post_button);
+
+        createButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToCreatePostActivity();
+            }
+        });
     }
 
     @Override
@@ -81,9 +94,12 @@ public class PostListActivity extends AppCompatActivity implements Response.Erro
 
     private void goToSinglePostActivity(String id){
         Intent intent = new Intent(this, SinglePostActivity.class);
-
         intent.putExtra("id", id);
 
+        startActivity(intent);
+    }
+    private void goToCreatePostActivity(){
+        Intent intent = new Intent(this, PostFormActivity.class);
         startActivity(intent);
     }
 }

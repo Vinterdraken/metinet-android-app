@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.PostFormActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:text="@string/text_post_form"
+            android:textSize="30sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            />
+
+        <EditText
+            android:id="@+id/EditTextTitle"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:hint="@string/enter_a_title"
+
+            android:inputType="text"
+            android:textColor="@color/black"/>
+
+        <EditText
+            android:id="@+id/EditTextContent"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:hint="@string/enter_post_content"
+
+            android:inputType="textMultiLine"
+            android:lines="5"
+            android:textColor="@color/black"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:gravity="center_horizontal"
+            android:padding="6dp"
+            android:weightSum="2">
+
+            <Button
+                android:id="@+id/cancel_post_creation_button"
+
+                android:background="@color/red"
+
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                tools:ignore="ButtonStyle,Suspicious0dp"
+                android:text="@string/cancel"
+
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/validate_post_creation_button"
+
+                android:background="@color/green"
+
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                tools:ignore="ButtonStyle,Suspicious0dp"
+                android:text="@string/create_post"
+
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>
