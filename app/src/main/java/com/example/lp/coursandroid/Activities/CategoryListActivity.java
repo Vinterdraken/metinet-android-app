@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 public class CategoryListActivity extends AppCompatActivity implements Response.ErrorListener {
 
-    private RequestMaker requestMaker = new RequestMaker();
+    private RequestMaker requestMaker = new RequestMaker(this);
     private ResponseJSONHandler responseJSONHandler;
 
     private ArrayList<Category> categories;
@@ -34,7 +34,6 @@ public class CategoryListActivity extends AppCompatActivity implements Response.
 
     private void getCategories(){
         requestMaker.makeGetRequest(
-                this,
                 "category",
                 new Response.Listener<JSONArray>() {
                     @Override

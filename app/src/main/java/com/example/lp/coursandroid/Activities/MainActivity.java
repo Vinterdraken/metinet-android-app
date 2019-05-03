@@ -24,12 +24,6 @@ public class MainActivity extends AppCompatActivity{
 
     private LinearLayout linearLayout;
 
-    private ResponseJSONHandler responseJSONHandler;
-    private RequestMaker requestMaker = new RequestMaker();
-
-    private ArrayList<Post> posts;
-    private ArrayList<Category> categories;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -2,12 +2,12 @@
     <string name="app_name">Posts and Categories</string>
     <string name="get_posts_button_text">Get Posts</string>
     <string name="get_categories_button_text">Get Categories</string>
-    <string name="create_post_button_text">Create a Post</string>
+    <string name="create_post_button_text">Create</string>
     <string name="update_post_button_text">Update</string>
     <string name="delete_post_button_text">Delete</string>
     <string name="text_post_form">Post\'s form</string>
     <string name="enter_a_title">Enter a title</string>
-    <string name="enter_post_content">Content...</string>
-    <string name="create_post">Create Post</string>
+    <string name="enter_post_content">Content…</string>
     <string name="cancel">Cancel</string>
+    <string name="go_back">Go Back</string>
 </resources>

@@ -23,7 +23,7 @@ import java.util.ArrayList;
 
 public class PostListActivity extends AppCompatActivity implements Response.ErrorListener {
 
-    private RequestMaker requestMaker = new RequestMaker();
+    private RequestMaker requestMaker = new RequestMaker(this);
     private ResponseJSONHandler responseJSONHandler;
 
     private ArrayList<Post> posts;
@@ -39,7 +39,6 @@ public class PostListActivity extends AppCompatActivity implements Response.Erro
 
     private void getPosts() {
         requestMaker.makeGetRequest(
-                this,
                 "post",
                 new Response.Listener<JSONArray>() {
                     @Override
@@ -57,6 +56,7 @@ public class PostListActivity extends AppCompatActivity implements Response.Erro
 
     private void setCreatePostButtonListener(){
         Button createButton = findViewById(R.id.create_post_button);
+        Button goBackButton = findViewById(R.id.go_back_button);
 
         createButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,6 +64,13 @@ public class PostListActivity extends AppCompatActivity implements Response.Erro
                 goToCreatePostActivity();
             }
         });
+        goBackButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        goToMainActivity();
+                    }
+                }
+        );
     }
 
     @Override
@@ -92,9 +99,13 @@ public class PostListActivity extends AppCompatActivity implements Response.Erro
         });
     }
 
+    private void goToMainActivity(){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
     private void goToSinglePostActivity(String id){
         Intent intent = new Intent(this, SinglePostActivity.class);
-        intent.putExtra("id", id);
+        intent.putExtra("postId", id);
 
         startActivity(intent);
     }

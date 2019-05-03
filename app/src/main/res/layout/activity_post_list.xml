@@ -11,14 +11,39 @@
 
     tools:context=".Activities.PostListActivity">
 
-    <Button
-        android:id="@+id/create_post_button"
-
-        android:background="@color/blue"
+    <LinearLayout
+        android:orientation="horizontal"
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/create_post_button_text"/>
+
+        android:gravity="center_horizontal"
+        android:padding="6dp"
+        android:weightSum="2">
+
+        <Button
+            android:id="@+id/go_back_button"
+
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            tools:ignore="Suspicious0dp"
+            android:text="@string/go_back"
+
+            android:layout_weight="1"/>
+
+        <Button
+            android:id="@+id/create_post_button"
+
+            android:background="@color/blue"
+
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            tools:ignore="Suspicious0dp"
+            android:text="@string/create_post_button_text"
+
+            android:layout_weight="1" />
+
+    </LinearLayout>
 
     <ListView
         android:id="@+id/post_list"

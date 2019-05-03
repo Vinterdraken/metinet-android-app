@@ -21,7 +21,7 @@ import org.json.JSONObject;
 public class SinglePostActivity extends AppCompatActivity implements Response.ErrorListener {
 
 
-    private RequestMaker requestMaker = new RequestMaker();
+    private RequestMaker requestMaker = new RequestMaker(this);
     private ResponseJSONHandler responseJSONHandler;
 
     private String postId;
@@ -49,10 +49,10 @@ public class SinglePostActivity extends AppCompatActivity implements Response.Er
         Bundle extra = getIntent().getExtras();
 
         if(extra != null) {
-            if (extra.getString("id") != null)
-                postId = extra.getString("id");
+            if (extra.getString("postId") != null)
+                postId = extra.getString("postId");
             else
-                Log.e("DEBUG", "extra.getString(\"id\") is null" );
+                Log.e("DEBUG", "extra.getString(\"postId\") is null" );
         }
     }
     private void setButtonsListeners() {
@@ -62,11 +62,16 @@ public class SinglePostActivity extends AppCompatActivity implements Response.Er
                 deletePost();
             }
         });
+        updateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               goOnPostFormActivity();
+            }
+        });
     }
 
     private void getPost(){
         requestMaker.makeSingleObjectGetRequest(
-                this,
                 "post" ,
                 postId,
                 new Response.Listener<JSONObject>() {
@@ -84,7 +89,6 @@ public class SinglePostActivity extends AppCompatActivity implements Response.Er
     }
     private void deletePost() {
         requestMaker.makeDeleteRequest(
-                this,
                 "post",
                 postId,
                 new Response.Listener<JSONObject>() {
@@ -116,6 +120,11 @@ public class SinglePostActivity extends AppCompatActivity implements Response.Er
 
     private void goBackToListActivity(){
         Intent intent = new Intent(this, PostListActivity.class);
+        startActivity(intent);
+    }
+    private void goOnPostFormActivity(){
+        Intent intent = new Intent(this, PostFormActivity.class);
+        intent.putExtra("postId", postId);
         startActivity(intent);
     }
 }

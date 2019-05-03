@@ -78,7 +78,6 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 tools:ignore="ButtonStyle,Suspicious0dp"
-                android:text="@string/create_post"
 
                 android:paddingLeft="8dp"
                 android:paddingRight="8dp"

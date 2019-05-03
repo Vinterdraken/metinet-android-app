@@ -20,11 +20,13 @@ import java.util.Map;
 public class RequestMaker {
 
     private final String token = "TmlxdWUgdGEgbWFyZQ==";
+    private Context context;
 
-    public RequestMaker() {
+    public RequestMaker(Context context) {
+        this.context = context;
     }
 
-    public void makeGetRequest(Context context, String objectName,
+    public void makeGetRequest(final String objectName,
                                Response.Listener<JSONArray> jsonArrayListener,
                                Response.ErrorListener errorListener){
         RequestQueue queue = Volley.newRequestQueue(context);
@@ -39,7 +41,7 @@ public class RequestMaker {
         queue.add(jsonArrayRequest);
     }
 
-    public void makeSingleObjectGetRequest(Context context, String objectName, String objectId,
+    public void makeSingleObjectGetRequest(final String objectName, final String objectId,
                                            Response.Listener<JSONObject> jsonObjectListener,
                                            Response.ErrorListener errorListener){
         RequestQueue queue = Volley.newRequestQueue(context);
@@ -55,7 +57,7 @@ public class RequestMaker {
         queue.add(jsonObjectRequest);
     }
 
-    public void makeDeleteRequest(Context context, String objectName, String objectId,
+    public void makeDeleteRequest(final String objectName, final String objectId,
                                   Response.Listener<JSONObject> jsonObjectListener,
                                   Response.ErrorListener errorListener) {
         RequestQueue queue = Volley.newRequestQueue(context);
@@ -84,17 +86,32 @@ public class RequestMaker {
 
     }
 
-    public void makePostRequest(Context context, final String objectName, final Map<String, String> objectToCreate,
+    public void makePostRequest(final String objectName, final Map<String, String> objectToCreate,
                                 Response.Listener<JSONObject> jsonObjectListener,
                                 Response.ErrorListener errorListener) {
         RequestQueue queue = Volley.newRequestQueue(context);
 
         String url = "http://10.0.2.2:3000/api/" + objectName;
 
+        JSONObject jsonObject = new JSONObject();
+
+        try {
+            if(objectName.equals("post")){
+                jsonObject.put("title", objectToCreate.get("title"));
+                jsonObject.put("content", objectToCreate.get("content"));
+                jsonObject.put("associe", objectToCreate.get("associe"));
+            }
+            else if(objectName.equals("category")){
+                jsonObject.put("name", objectToCreate.get("name"));
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                 Request.Method.POST,
                 url,
-                null,
+                jsonObject,
                 jsonObjectListener,
                 errorListener
         ) {
@@ -108,13 +125,51 @@ public class RequestMaker {
                 return headers;
             }
 
-            @Override
-            protected Map<String, String> getParams()
-            {
-                Log.e("MAP", objectToCreate.get("title"));
+        };
 
-                return objectToCreate;
+        queue.add(jsonObjectRequest);
+    }
+
+    public void makePutRequest(final String objectName, final String objectId,
+                               final Map<String, String> objectToCreate,
+                               Response.Listener<JSONObject> jsonObjectListener,
+                               Response.ErrorListener errorListener) {
+        RequestQueue queue = Volley.newRequestQueue(context);
+
+        String url = "http://10.0.2.2:3000/api/" + objectName + "/" + objectId;
+
+        JSONObject jsonObject = new JSONObject();
+
+        try {
+            if(objectName.equals("post")){
+                jsonObject.put("title", objectToCreate.get("title"));
+                jsonObject.put("content", objectToCreate.get("content"));
+                jsonObject.put("associe", objectToCreate.get("associe"));
             }
+            else if(objectName.equals("category")){
+                jsonObject.put("name", objectToCreate.get("name"));
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                Request.Method.PUT,
+                url,
+                jsonObject,
+                jsonObjectListener,
+                errorListener
+        ) {
+            @Override
+            public Map<String, String> getHeaders()
+            {
+                Map<String, String>  headers = new HashMap<> ();
+                headers.put("Content-Type", "application/json");
+                headers.put("Authorization", token);
+
+                return headers;
+            }
+
         };
 
         queue.add(jsonObjectRequest);

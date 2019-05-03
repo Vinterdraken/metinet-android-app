@@ -55,7 +55,7 @@
         <Button
             android:id="@+id/update_post_button"
 
-            android:background="@color/blue"
+            android:background="@color/orange"
 
             android:layout_width="0dp"
             android:layout_height="match_parent"
