@@ -9,7 +9,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    tools:context=".Activities.PostListActivity">
+    tools:context=".Activities.Post.PostListActivity">
 
     <LinearLayout
         android:orientation="horizontal"
@@ -22,7 +22,7 @@
         android:weightSum="2">
 
         <Button
-            android:id="@+id/go_back_button"
+            android:id="@+id/list_go_back_button"
 
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -39,7 +39,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             tools:ignore="Suspicious0dp"
-            android:text="@string/create_post_button_text"
+            android:text="@string/create_button_text"
 
             android:layout_weight="1" />
 

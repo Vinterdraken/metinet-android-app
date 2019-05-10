@@ -45,6 +45,7 @@ public class ResponseJSONHandler {
                     jsonObject.getString("title"),
                     jsonObject.getString("creationDate"),
                     jsonObject.getString("content"),
+                    category.getString("_id"),
                     category.getString("name")
                 );
 
@@ -62,15 +63,14 @@ public class ResponseJSONHandler {
         try {
             JSONObject category = jsonObject.getJSONObject("associe");
 
-            Post newPost = new Post(
+            return new Post(
                     jsonObject.getString("_id"),
                     jsonObject.getString("title"),
                     jsonObject.getString("creationDate"),
                     jsonObject.getString("content"),
+                    category.getString("_id"),
                     category.getString("name")
             );
-
-            return newPost;
 
         } catch(JSONException je) {
             je.printStackTrace();
@@ -94,6 +94,18 @@ public class ResponseJSONHandler {
             }
 
             return categories;
+
+        } catch(JSONException je) {
+            je.printStackTrace();
+            return null;
+        }
+    }
+    public Category getCategory(){
+        try {
+            return new Category(
+                    jsonObject.getString("_id"),
+                    jsonObject.getString("name")
+            );
 
         } catch(JSONException je) {
             je.printStackTrace();

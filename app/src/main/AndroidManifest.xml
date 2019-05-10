@@ -18,10 +18,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.PostListActivity" />
-        <activity android:name=".Activities.CategoryListActivity" />
-        <activity android:name=".Activities.SinglePostActivity" />
-        <activity android:name=".Activities.PostFormActivity"></activity>
+        <activity android:name=".Activities.Post.PostListActivity" />
+        <activity android:name=".Activities.Category.CategoryListActivity" />
+        <activity android:name=".Activities.Post.SinglePostActivity" />
+        <activity android:name=".Activities.Post.PostFormActivity" />
+        <activity android:name=".Activities.Category.CategoryFormActivity" />
+        <activity android:name=".Activities.Category.SingleCategoryActivity"></activity>
     </application>
 
 </manifest>

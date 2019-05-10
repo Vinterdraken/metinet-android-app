@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            android:text="@string/text_post_form"
+            android:text="@string/text_category_form"
             android:textSize="30sp"
             android:textColor="@color/black"
             android:textStyle="bold"
@@ -24,29 +24,12 @@
             />
 
         <EditText
-            android:id="@+id/EditTextTitle"
+            android:id="@+id/EditTextName"
 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            android:hint="@string/enter_a_title"
-
-            android:inputType="text"
-            android:textColor="@color/black"/>
-
-        <Spinner
-            android:id="@+id/categories_spinner"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content" />
-
-
-        <EditText
-            android:id="@+id/EditTextContent"
-
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:hint="@string/enter_post_content"
+            android:hint="@string/enter_a_name"
 
             android:inputType="textMultiLine"
             android:lines="5"
@@ -63,7 +46,7 @@
             android:weightSum="2">
 
             <Button
-                android:id="@+id/cancel_post_creation_button"
+                android:id="@+id/cancel_category_creation_button"
 
                 android:background="@color/red"
 
@@ -77,7 +60,7 @@
                 android:layout_weight="1" />
 
             <Button
-                android:id="@+id/validate_post_creation_button"
+                android:id="@+id/validate_category_creation_button"
 
                 android:background="@color/green"
 

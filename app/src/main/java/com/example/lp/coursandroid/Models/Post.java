@@ -6,14 +6,14 @@ public class Post {
     private String title;
     private String creationDate;
     private String content;
-    private String idCategory;
+    private Category category;
 
-    public Post(String id, String title, String creationDate, String content, String idCategory) {
+    public Post(String id, String title, String creationDate, String content, String idCategory, String nameCategory) {
         this.id = id;
         this.title = title;
         this.creationDate = creationDate;
         this.content = content;
-        this.idCategory = idCategory;
+        this.category = new Category(idCategory, nameCategory);
     }
 
     public String getId() {
@@ -28,8 +28,8 @@ public class Post {
     public String getContent() {
         return content;
     }
-    public String getIdCategory() {
-        return idCategory;
+    public Category getCategory() {
+        return category;
     }
 
     @Override
@@ -39,7 +39,7 @@ public class Post {
                 ", title='" + title + '\'' +
                 ", creationDate='" + creationDate + '\'' +
                 ", content='" + content + '\'' +
-                ", idCategory='" + idCategory + '\'' +
+                ", idCategory='" + category.getId() + '\'' +
                 '}';
     }
 }

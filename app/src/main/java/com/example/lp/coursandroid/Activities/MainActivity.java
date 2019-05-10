@@ -6,19 +6,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.example.lp.coursandroid.Handlers.ResponseJSONHandler;
-import com.example.lp.coursandroid.Models.Category;
-import com.example.lp.coursandroid.Models.Post;
+import com.example.lp.coursandroid.Activities.Category.CategoryListActivity;
+import com.example.lp.coursandroid.Activities.Post.PostListActivity;
 import com.example.lp.coursandroid.R;
-import com.example.lp.coursandroid.Request.RequestMaker;
-
-import org.json.JSONArray;
-
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity{
 
